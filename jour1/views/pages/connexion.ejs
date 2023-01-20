@@ -11,8 +11,12 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
+          <% if ( data.sessionLogin ) { %>
           <li><a href="/profile">Profile</a></li>
+          <li><a href="/destroy">Déconnexion</a></li>
+          <%} else { %>
           <li><a href="/connexion">Connexion</a></li>
+          <% } %>
         </ul>
       </nav>
     </header>
@@ -20,7 +24,7 @@
       <h1><%= data.titlePage %></h1>
       <fieldset>
         <legend>Connexion</legend>
-        <form action="/profile" method="post">
+        <form action="/connexion" method="post">
           <label for="pseudo">Pseudo</label>
           <input type="text" name="pseudo" id="pseudo" placeholder="pseudo " />
           <label for="password">Password</label>

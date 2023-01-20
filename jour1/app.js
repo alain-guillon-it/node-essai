@@ -59,7 +59,7 @@ app.get(["/", "/home", "/accueil"], (req, res) => {
   res.status(200).render("pages/home", {
     data: {
       titlePage: "HomePage",
-      sessionLogin: req.params.login,
+      sessionLogin: req.session.login,
       sessionPassword: req.session.password,
     },
   });
@@ -71,32 +71,47 @@ app.get(["/", "/home", "/accueil"], (req, res) => {
  * =========================================================================
  */
 app.get("/connexion", (req, res) => {
+  res.status(200).render("pages/connexion", {
+    data: {
+      titlepage: "connexion",
+    },
+  });
+});
+
+app.get("/profile", (req, res) => {
+  if (!req.session.login && !req.session.password) {
+    res.status(403).redirect("/connexion");
+  } else {
+    res.status(200).render("pages/profile", {
+      data: {
+        titlePage: "Profile",
+        sessionLogin: req.session.login,
+        sessionPassword: req.session.password,
+      },
+    });
+  }
+});
+
+app.get("/destroy", (req, res) => {
+  req.session = null;
+  res.status(200).redirect("/");
+});
+
+/**
+ * =========================================================================
+ * Routes POST
+ * =========================================================================
+ */
+app.post("/connexion", (req, res) => {
   const login = req.body.pseudo;
   const password = req.body.password;
 
   req.session.login = login;
   req.session.password = password;
 
-  res.status(200).render("pages/connexion", {
-    data: {
-      titlePage: "Connexion",
-      sessionLogin: req.session.login,
-      sessionPassword: req.session.password,
-    },
-  });
+  console.log(req.session.login, req.session.password);
 
-  if (req.session.login) {
-    document.URL.replace("/profile");
-  }
-});
-app.get("/profile", (req, res) => {
-  res.status(200).render("pages/profile", {
-    data: {
-      titlePage: "Profile",
-      sessionLogin: req.session.login,
-      sessionPassword: req.session.password,
-    },
-  });
+  res.status(200).redirect("/profile");
 });
 
 /**
@@ -108,7 +123,7 @@ app.use((req, res) => {
   res.status(404).render("pages/error", {
     data: {
       titlePage: "Error 404 - Page Not Found",
-      sessionLogin: req.params.login,
+      sessionLogin: req.session.login,
       sessionPassword: req.session.password,
     },
   });

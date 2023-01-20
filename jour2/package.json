@@ -1,0 +1,23 @@
+{
+  "name": "jour2",
+  "version": "1.0.0",
+  "description": "conception d'un jeu le Juste prix pour revoir tout ce que nous avons défini",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "PORT=8080 nodemon app.js",
+    "dev": "PORT=5000 nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cookie-session": "^2.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "serve-favicon": "^2.5.0"
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      h1 {
+        margin-bottom: 50px;
+        text-align: center;
+      }
+      form {
+        width: 776px;
+        border: 2px solid #333;
+        padding: 25px;
+        margin: 0 auto;
+      }
+      div {
+        padding: 5px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      div label {
+        margin-right: 25px;
+      }
+      div input {
+        width: inherit;
+        padding: 8px 16px;
+      }
+      div button {
+        margin-top: 25px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 auto;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/users">Liste des utilisateurs</a></li>
+      <li><a href="/add">Ajouter un utilisateur</a></li>
+      <li><a href="/update">Mettre à jour un utilisateur</a></li>
+    </ul>
+    <h1>Ajouter un utilisateur</h1>
+    <form action="/add" method="post">
+      <div>
+        <label for="firstname">Firstname</label>
+        <input type="text" name="firstname" id="firstname" />
+      </div>
+      <div>
+        <label for="lastname">Lastname</label>
+        <input type="text" name="lastname" id="lastname" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div>
+        <button type="submit">Ajouter</button>
+      </div>
+    </form>
+  </body>
+</html>

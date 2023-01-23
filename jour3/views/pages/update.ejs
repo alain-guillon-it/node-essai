@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      tr {
+        margin: 10px 0;
+      }
+      table a {
+        text-decoration: none;
+        padding: 4px;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/users">Liste des utilisateurs</a></li>
+      <li><a href="/add">Ajouter un utilisateur</a></li>
+      <li><a href="/update">Mettre à jour un utilisateur</a></li>
+    </ul>
+    <h1>Mettre à jour un element</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>FIRSTNAME</th>
+          <th>LASTNAME</th>
+          <th>EMAIL</th>
+          <th>UPDATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i=0; i < data.length; i++) { %>
+        <tr>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].firstName %></td>
+          <td><%= data[i].lastName %></td>
+          <td><%= data[i].email %></td>
+          <td><a <%= `href=/update/${data[i].id}` %>>mettre à jour</a></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
